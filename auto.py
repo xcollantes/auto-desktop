@@ -16,5 +16,10 @@ def changeWin():
 
 
 if __name__ == '__main__':
-	mouseMove()
-	changeWin()
+	try:
+		mouseMove()
+		changeWin()
+		pressKey()
+		
+	except KeyboardInterrupt as kb:
+		print("PROGRAM HALTED. %s" %kb)
