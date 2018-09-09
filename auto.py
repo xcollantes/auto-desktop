@@ -2,7 +2,19 @@
 # @author Xavier Collantes
 # @date 09/09/2018
 
-import pyautogui
+import pyautogui, time, arrow
 
-if __name__=='__main__':
+pyautogui.PAUSE = 0.50
+pyautogui.FAILSAFE = TRUE
+
+def moveMouse():
 	
+
+	
+def changeWin():
+
+
+
+if __name__ == '__main__':
+	mouseMove()
+	changeWin()
