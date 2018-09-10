@@ -18,7 +18,7 @@ def moveMouse(min=10, max=25):
 	pyautogui.moveTo(halfPos)
 	try:
 		while True:		
-			pyautogui.moveRel((10, 0))
+			pyautogui.moveRel((2, 0))
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
 		print("PROGRAM HALTED.")
@@ -35,16 +35,18 @@ def pressKeySub(key='ctl', min=10, max=20):
 	
 	
 # Switches between up to three windows by pressing `Alt + Tab` 
-def switchWin(min=5, max=6):
+def switchWin(min=30, max=50):
 	running()
 	try:
+		# Remove cmd window from the switch back and forth 
+		pyautogui.hotkey('alt', 'tab')
+		pyautogui.keyDown('alt')
+		pyautogui.press('tab')
+		pyautogui.press('tab')
+		pyautogui.keyUp('alt')
+		
 		while True:
-			pyautogui.keyDown('alt')
-			
-			for m in range(random.randint(1, 5)):
-				pyautogui.press('tab')
-			pyautogui.keyUp('alt')
-
+			pyautogui.hotkey('alt', 'tab')
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
 		pass
@@ -98,10 +100,10 @@ if __name__ == '__main__':
 	try:
 		print("Hello! Thank you for using this productivity app.")
 		
-		#moveMouse()
+		moveMouse()
 		#pressKeySub()
 		#writeEssay()
-		switchWin(1, 3)
+		#switchWin()
 		
 		
 	except KeyboardInterrupt as kb:
