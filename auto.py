@@ -103,7 +103,7 @@ if __name__ == '__main__':
 		moveMouse()
 		#pressKeySub()
 		#writeEssay()
-		#switchWin()
+		switchWin()
 		
 		
 	except KeyboardInterrupt as kb:
