@@ -1,1 +1,3 @@
-# auto-desktop
+# Auto Desktop
+Mouse, keyboard, and tabbing between open windows.  
+## 
