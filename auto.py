@@ -46,10 +46,10 @@ def switchWin(min=30, max=50):
 	try:
 		# Remove cmd window from the switch back and forth 
 		pyautogui.hotkey('alt', 'tab')
-		pyautogui.keyDown('alt')
+		pyautogui.keyDown('altleft')  # I'm not about the AltRight 
 		pyautogui.press('tab')
 		pyautogui.press('tab')
-		pyautogui.keyUp('alt')
+		pyautogui.keyUp('altleft')
 		
 		while True:
 			pyautogui.hotkey('alt', 'tab')
@@ -71,7 +71,7 @@ def writeEssay(key='win'):
 		# Open MS Word 
 		pyautogui.press('win')
 		time.sleep(2)
-		pyautogui.typewrite('Word')
+		pyautogui.typewrite('Word')  # I hope the first option is MS Word 
 		time.sleep(2)
 		pyautogui.press('enter')
 		time.sleep(15)
@@ -83,6 +83,10 @@ def writeEssay(key='win'):
 		# Take text file into string 
 		text = f.read()
 		textSep = text.split(',')
+		
+		# Header for your fake-ass essay 
+		pyautogui.typewrite(arrow.utcnow('local'))
+		pyautogui.press('enter')
 		
 		# Write Adam Smith's 1776 "The Wealth of Nations"
 		for i in textSep:
