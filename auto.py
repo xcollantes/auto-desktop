@@ -2,7 +2,7 @@
 # @author Xavier Collantes
 # @date 09/09/2018
 
-import pyautogui, time, arrow, os, random
+import pyautogui, time, arrow, os, random, subprocess
 
 
 pyautogui.PAUSE = 0.80
@@ -18,7 +18,7 @@ def moveMouse(min=10, max=25):
 	pyautogui.moveTo(halfPos)
 	try:
 		while True:		
-			pyautogui.moveRel((2, 0))
+			pyautogui.moveRel((8, 0))
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
 		print("PROGRAM HALTED.")
@@ -65,7 +65,7 @@ def writeEssay(key='win'):
 		# Open MS Word 
 		pyautogui.press('win')
 		time.sleep(2)
-		pyautogui.typewrite('Microsoft Word')
+		pyautogui.typewrite('Word')
 		time.sleep(2)
 		pyautogui.press('enter')
 		time.sleep(15)
@@ -96,15 +96,58 @@ def running():
 	print ("Press `CTL + C` on your keyboard to end this program.")
 	
 	
+# Print out the options in Command Line and returns chosen program 
+def options():
+	print("Enter a program number and press ENTER:")
+	print("")
+	print("Program    |   Description                                         |   Program Number")
+	print("-------------------------------------------------------------------------------------")
+	print("Mouse      :  Moves mouse a few pixels every 10 to 25 seconds      |   1")
+	print("")
+	print("Crazy Ctl  :  Randomly presses `Ctl` every 10 to 20 seconds        |   2")
+	print("")
+	print("Switch     :  Switch back and forth every between two open windows |   3")
+	print("")
+	print("Ghostwriter:  a) Search for Microsoft Word on your computer        |   4")
+	print("              b) Then write Adam Smith's 1776 'Wealth of Nations'     ")
+	print("")
+	userInput = input("Please choose a number: ")
+	
+	if userInput in {"1", "2", "3", "4"}:
+		return userInput
+	else:
+		options()
+
+		
+# Instructions after the program is terminated 
+def cleanEnd():
+	if os.name == 'nt':
+		os.system("cls")
+	else:
+		os.system("clear")
+		
+		
+def hideEvidence():
+	os.system("exit")
+
+	
 if __name__ == '__main__':
 	try:
 		print("Hello! Thank you for using this productivity app.")
+		print("")
 		
-		moveMouse()
-		#pressKeySub()
-		#writeEssay()
-		switchWin()
-		
+		choice = options()
+		if choice == '1':  # Mouse
+			moveMouse()
+		elif choice == '2':  # Crazy Ctl
+			pressKeySub()
+		elif choice == '3':  # Switch
+			switchWin()
+		elif choice == '4':  # Ghostwriter
+			writeEssay()
+		else:
+			options()
 		
 	except KeyboardInterrupt as kb:
-		print("PROGRAM HALTED. %s" %kb)
+		cleanEnd()
+		hideEvidence()
