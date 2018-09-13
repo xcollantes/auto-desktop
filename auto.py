@@ -12,13 +12,19 @@ pyautogui.FAILSAFE = True
 # MoveMouse will run until ctl+c is pressed or failsafe is triggered 
 def moveMouse(min=10, max=25):	
 	running()
+	pix = 10
 	screenW = pyautogui.size()[0]
 	screenH = pyautogui.size()[1]
 	halfPos = (screenW // 2, screenH // 2)
 	pyautogui.moveTo(halfPos)
 	try:
-		while True:		
-			pyautogui.moveRel((8, 0))
+		while True:
+			dir = random.randint(0, 2)
+			if dir >= 1:
+				pyautogui.moveRel((pix, 0))
+			else:
+				pyautogui.moveRel((0, pix))
+			
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
 		print("PROGRAM HALTED.")
