@@ -111,7 +111,7 @@ def options():
 	print("Ghostwriter:  a) Search for Microsoft Word on your computer        |   4")
 	print("              b) Then write Adam Smith's 1776 'Wealth of Nations'     ")
 	print("")
-	userInput = input("Please choose a number: ")
+	userInput = input("Please choose a number corresponding to a program: ")
 	
 	if userInput in {"1", "2", "3", "4"}:
 		return userInput
