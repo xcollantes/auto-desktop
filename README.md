@@ -10,7 +10,4 @@ Command line prompt should open.  <br><br>
   **`Ghostwriter`** Search for Microsoft Word on your computer, then incrementally write Adam Smith's 1776 'Wealth of Nations'. <br>
   
 ***
-[Xavier Collantes](in) &#169; 2018
-
-
-[in]:(https://linkedin.com/in/xaviercollantes)
+[Xavier Collantes](https://linkedin.com/in/xaviercollantes) &#169; 2018
