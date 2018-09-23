@@ -2,7 +2,7 @@
 # @author Xavier Collantes
 # @date 09/09/2018
 
-import pyautogui, time, arrow, os, random, subprocess
+import pyautogui, time, arrow, os, random, subprocess, locale
 
 
 pyautogui.PAUSE = 0.80
@@ -85,8 +85,6 @@ def writeEssay(key='win'):
 		textSep = text.split(',')
 		
 		# Header for your fake-ass essay 
-		pyautogui.typewrite(arrow.utcnow('local'))
-		pyautogui.press('enter')
 		
 		# Write Adam Smith's 1776 "The Wealth of Nations"
 		for i in textSep:
