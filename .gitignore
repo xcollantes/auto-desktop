@@ -1,0 +1,5 @@
+env/
+img/
+.gitattributes
+dist/
+__pycache__
