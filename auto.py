@@ -2,12 +2,13 @@
 # @author Xavier Collantes
 # @date 09/09/2018
 
-import pyautogui, time, arrow, os, random, subprocess, locale
+import pyautogui, time, arrow, os, random, subprocess, locale, logging
 
 
 pyautogui.PAUSE = 0.80
 pyautogui.FAILSAFE = True
 
+logging.basicConfig(filename='log.txt', level=logging.DEBUG)
 
 # MoveMouse will run until ctl+c is pressed or failsafe is triggered 
 def moveMouse(min=10, max=25):	
