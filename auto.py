@@ -4,16 +4,21 @@
 
 import pyautogui, time, arrow, os, random, subprocess, locale, logging
 
+logging.basicConfig(filename='auto.log', 
+					level=logging.DEBUG, 
+					format='%(asctime)s - %(levelname)-10s : %(message)s',
+					datefmt='%a %d %b %Y %H:%M:%S %z')
+
 
 pyautogui.PAUSE = 0.80
 pyautogui.FAILSAFE = True
 
-logging.basicConfig(filename='log.txt', level=logging.DEBUG)
 
 # MoveMouse will run until ctl+c is pressed or failsafe is triggered 
 def moveMouse(min=10, max=25):	
 	running()
-	pix = 10
+	pix = 37
+	over = 4 # Seconds
 	screenW = pyautogui.size()[0]
 	screenH = pyautogui.size()[1]
 	halfPos = (screenW // 2, screenH // 2)
@@ -22,13 +27,13 @@ def moveMouse(min=10, max=25):
 		while True:
 			dir = random.randint(0, 2)
 			if dir >= 1:
-				pyautogui.moveRel((pix, 0))
+				pyautogui.moveRel((pix, 0), duration=over)
 			else:
-				pyautogui.moveRel((0, pix))
-			
+				pyautogui.moveRel((0, pix), duration=over)
+			logging.info('MOUSE_AT: ' + '(' + str(pyautogui.position()[0]) + 'x' + str(pyautogui.position()[1]) + ')')
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
-		logging.info("PROGRAM HALTED.")
+		logging.info("PROGRAM HALTED. %s" % kb)
 
 		
 def pressKeySub(key='ctl', min=10, max=20):
@@ -47,6 +52,7 @@ def switchWin(min=30, max=50):
 	try:
 		# Remove cmd window from the switch back and forth 
 		pyautogui.hotkey('alt', 'tab')
+		logging.info('Alt+Tab pressed')
 		pyautogui.keyDown('altleft')  # I'm not about the AltRight 
 		pyautogui.press('tab')
 		pyautogui.press('tab')
@@ -54,6 +60,7 @@ def switchWin(min=30, max=50):
 		
 		while True:
 			pyautogui.hotkey('alt', 'tab')
+			logging.info('Alt+Tab pressed')
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
 		pass
@@ -137,6 +144,7 @@ def cleanEnd():
 		
 		
 def hideEvidence():
+	logging.info("")
 	os.system("exit")
 
 	
