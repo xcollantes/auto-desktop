@@ -28,7 +28,7 @@ def moveMouse(min=10, max=25):
 			
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
-		print("PROGRAM HALTED.")
+		logging.info("PROGRAM HALTED.")
 
 		
 def pressKeySub(key='ctl', min=10, max=20):
@@ -38,7 +38,7 @@ def pressKeySub(key='ctl', min=10, max=20):
 			pyautogui.press(key)
 			time.sleep(random.randrange(min, max))
 	except KeyboardInterrupt as kb:
-		print("PROGRAM HALTED.")
+		logging.info("PROGRAM HALTED.")
 	
 	
 # Switches between up to three windows by pressing `Alt + Tab` 
@@ -66,7 +66,7 @@ def writeEssay(key='win'):
 	try:
 		f = open('txt/smith.txt', 'r')
 	except IOError as ioe:
-		print("Source file not found: %s" %ioe)
+		logging.error("Source file not found: %s" %ioe)
 		
 	try:
 		# Open MS Word 
@@ -94,7 +94,7 @@ def writeEssay(key='win'):
 			time.sleep(random.randrange(20, 30))
 			
 	except KeyboardInterrupt as kb:
-		print("PROGRAM HALTED.")
+		logging.info("PROGRAM HALTED.")
 	
 	f.close()
 	
